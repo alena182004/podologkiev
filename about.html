@@ -11,7 +11,6 @@
       --secondary-color: #2C3E50;
       --white: #fff;
     }
-
     * {
       margin: 0;
       padding: 0;
@@ -41,6 +40,20 @@
       z-index: 1000;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
       transition: background 0.5s;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+    }
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
     }
     nav {
       display: flex;
@@ -150,9 +163,22 @@
       transform: scale(1.2);
     }
     @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .toggle-btn {
+        display: block;
+      }
       nav {
         flex-direction: column;
         gap: 1rem;
+        width: 100%;
+        display: none;
+        margin-top: 1rem;
+      }
+      nav.active {
+        display: flex;
       }
       .about-info h1 {
         font-size: 2.5rem;
@@ -172,13 +198,16 @@
 </head>
 <body>
   <header>
-    <nav>
-      <a href="index.html">Головна</a>
-      <a href="about.html">Про мене</a>
-      <a href="services.html">Послуги</a>
-      <a href="contacts.html">Контакти</a>
-      <a href="booking.html">Онлайн запис</a>
-    </nav>
+    <div class="header-container">
+      <button id="toggleMenu" class="toggle-btn">&#9776;</button>
+      <nav id="navMenu">
+        <a href="index.html">Головна</a>
+        <a href="about.html">Про мене</a>
+        <a href="services.html">Послуги</a>
+        <a href="contacts.html">Контакти</a>
+        <a href="booking.html">Онлайн запис</a>
+      </nav>
+    </div>
   </header>
   
   <div class="container">
@@ -241,6 +270,13 @@
         showTestimonial(currentIndex);
         testimonialInterval = setInterval(nextTestimonial, 5000);
       });
+    });
+
+    // Mobile menu toggle
+    const toggleMenu = document.getElementById('toggleMenu');
+    const navMenu = document.getElementById('navMenu');
+    toggleMenu.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
     });
   </script>
 </body>
