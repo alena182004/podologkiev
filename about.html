@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Подологія - Про мене</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #18BC9C;
+      --secondary-color: #2C3E50;
+      --white: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('david-van-dijk-3LTht2nxd34-unsplash.jpg') no-repeat center/cover;
+      position: relative;
+      color: var(--white);
+      overflow-x: hidden;
+    }
+    /* Фонове затемнення */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      transition: background 0.5s;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s, transform 0.3s;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--white);
+      left: 0;
+      bottom: -5px;
+      transition: width 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    nav a:hover {
+      transform: translateY(-3px);
+    }
+    .container {
+      padding: 100px 2rem 2rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .about-info {
+      margin-bottom: 3rem;
+      animation: fadeIn 1.5s ease-out;
+    }
+    .about-info h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+    .about-info p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      line-height: 1.6;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Секція відгуків */
+    .testimonials {
+      position: relative;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+    .testimonial {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      padding: 1rem;
+      text-align: center;
+    }
+    .testimonial.active {
+      opacity: 1;
+      position: relative;
+    }
+    .testimonial h3 {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+    .testimonial p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+    /* Крапки навігації */
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: var(--white);
+      border-radius: 50%;
+      opacity: 0.5;
+      cursor: pointer;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .dot.active {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .about-info h1 {
+        font-size: 2.5rem;
+      }
+      .about-info p {
+        font-size: 1.1rem;
+      }
+      .testimonials {
+        width: 90%;
+        padding: 1.5rem;
+      }
+      .testimonial p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Головна</a>
+      <a href="about.html">Про мене</a>
+      <a href="services.html">Послуги</a>
+      <a href="contacts.html">Контакти</a>
+      <a href="booking.html">Онлайн запис</a>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <section class="about-info">
+      <h1>Про мене</h1>
+      <p>
+        Я – професійна подологиня з багаторічним досвідом, яка допомагає людям зберегти здоров’я своїх стоп за допомогою сучасних методів та індивідуального підходу.
+      </p>
+    </section>
+    
+    <!-- Анімований слайдер відгуків -->
+    <section class="testimonials">
+      <div class="testimonial active">
+        <p>"Неймовірний професіоналізм та увага до деталей. Рекомендую всім!"</p>
+        <h3>Олена</h3>
+      </div>
+      <div class="testimonial">
+        <p>"Після процедури почуваюся значно краще, завжди отримую позитивний результат."</p>
+        <h3>Марія</h3>
+      </div>
+      <div class="testimonial">
+        <p>"Чудовий сервіс, приємна атмосфера та професійний підхід."</p>
+        <h3>Ірина</h3>
+      </div>
+      <div class="dots">
+        <div class="dot active" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const testimonials = document.querySelectorAll('.testimonial');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+    const totalTestimonials = testimonials.length;
+
+    function showTestimonial(index) {
+      testimonials.forEach((testimonial, i) => {
+        testimonial.classList.toggle('active', i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextTestimonial() {
+      currentIndex = (currentIndex + 1) % totalTestimonials;
+      showTestimonial(currentIndex);
+    }
+
+    let testimonialInterval = setInterval(nextTestimonial, 5000);
+
+    // Подія кліку по крапках для ручного перемикання
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        clearInterval(testimonialInterval);
+        currentIndex = parseInt(dot.getAttribute('data-index'));
+        showTestimonial(currentIndex);
+        testimonialInterval = setInterval(nextTestimonial, 5000);
+      });
+    });
+  </script>
+</body>
+</html>
